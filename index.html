@@ -794,8 +794,13 @@
 
         // Modal functionality
         function showModal(event) {
-            if (event) event.preventDefault();
-            document.getElementById('modalOverlay').classList.add('active');
+            if (event) {
+                event.preventDefault();
+                gtag('event', 'click_nav', {
+                  'element': event.target.innerText
+                });
+                document.getElementById('modalOverlay').classList.add('active');
+            }
         }
 
         function closeModal(event) {
