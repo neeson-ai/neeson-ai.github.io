@@ -1,17 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BQSEJ456P"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-9BQSEJ456P');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Refiner - AI-Powered Resume Optimization</title>
+    <title>Neeson.ai - Fixing Engineering Hiring</title>
     <style>
         * {
             margin: 0;
@@ -19,384 +11,386 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --deep-blue: #0a1628;
+            --pascal-blue: #1e3a5f;
+            --accent-blue: #2563eb;
+            --bright-blue: #3b82f6;
+            --text-white: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-dim: #94a3b8;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
-            color: #2c3e50;
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--pascal-blue) 100%);
+            color: var(--text-white);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Navigation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
+            z-index: 100;
+            padding: 20px 0;
+            background: rgba(10, 22, 40, 0.8);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            z-index: 1000;
-            padding: 0 20px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #4a90e2;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-white);
+            text-decoration: none;
         }
 
         .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--bright-blue) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .logo-ai {
+            color: var(--bright-blue);
+            font-weight: 600;
+        }
+
+        .tagline {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 20px 80px;
+        }
+
+        .hero-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-brand-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--bright-blue) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 900;
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.4);
+        }
+
+        .hero-brand-text {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .hero-brand-text .ai {
+            color: var(--bright-blue);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--bright-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero .mission {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--bright-blue);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .problem-section {
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 60px;
+            color: var(--text-white);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 175px;
+            margin-top: 80px;
+        }
+
+        .problem-card {
+            background: rgba(30, 58, 95, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out both;
+        }
+
+        .problem-card:nth-child(1) { animation-delay: 0.1s; }
+        .problem-card:nth-child(2) { animation-delay: 0.2s; }
+        .problem-card:nth-child(3) { animation-delay: 0.3s; }
+        .problem-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--bright-blue);
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.3);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--bright-blue);
+        }
+
+        .problem-card p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .stat {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            margin: 10px 0;
+        }
+
+        .vision-section {
+            padding: 120px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(37, 99, 235, 0.05) 100%);
+        }
+
+        .vision-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .vision-statement {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: var(--text-white);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .vision-statement strong {
+            color: var(--bright-blue);
+            font-weight: 700;
+        }
+
+        .principles-section {
+            padding: 120px 20px;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 80px auto 0;
+        }
+
+        .principle {
+            background: rgba(30, 58, 95, 0.3);
+            border-left: 4px solid var(--bright-blue);
+            padding: 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .principle:hover {
+            background: rgba(30, 58, 95, 0.5);
+            transform: translateX(10px);
+        }
+
+        .principle-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-blue);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .principle h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-white);
+        }
+
+        .principle p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+
+        .cta-section {
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--bright-blue) 0%, var(--text-white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-gray);
+            margin-bottom: 50px;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            font-size: 1.2rem;
+            padding: 20px 50px;
+            background: rgba(37, 99, 235, 0.2);
+            border: 2px solid var(--bright-blue);
+            border-radius: 50px;
+            color: var(--bright-blue);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            animation: pulse 2s infinite;
+        }
+
+        footer {
+            padding: 60px 20px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-brand-icon {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--bright-blue) 100%);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
+            font-size: 1.2rem;
+            font-weight: 900;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
+        .footer-brand .ai {
+            color: var(--bright-blue);
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #5a6c7d;
-            font-weight: 500;
-            transition: color 0.3s;
+        footer p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
         }
 
-        .nav-links a:hover {
-            color: #4a90e2;
-        }
-
-        .nav-links {
-
-            .cta-button {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-                padding: 12px 28px;
-                border-radius: 25px;
-                text-decoration: none;
-                font-weight: 600;
-                transition: transform 0.3s, box-shadow 0.3s;
-                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            }
-
-            .cta-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 20px 60px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 20px;
-            color: #5a6c7d;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 800;
-            color: #667eea;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #5a6c7d;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 8px;
-        }
-
-        /* Comparison Section */
-        .comparison-section {
-            max-width: 1000px;
-            margin: 80px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 50px;
-            color: #2c3e50;
-        }
-
-        .comparison-container {
-            position: relative;
-            width: 100%;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            aspect-ratio: 8/11;
-            min-height: 700px;
-        }
-
-        .resume-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .resume-before {
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .resume-after {
-            background: white;
-            clip-path: inset(0 0 0 50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: none;
-        }
-
-        .resume-svg {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 20px;
-        }
-
-        .slider-handle {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            background: white;
-            cursor: ew-resize;
-            transform: translateX(-50%);
-            z-index: 10;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            transition: none;
-        }
-
-        .slider-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #667eea;
-            cursor: ew-resize;
-            user-select: none;
-        }
-
-        .comparison-labels {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 30px;
-            pointer-events: none;
-            z-index: 11;
-        }
-
-        .change-callout {
-            position: absolute;
-            background: rgba(102, 126, 234, 0.95);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            pointer-events: none;
-            z-index: 12;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            white-space: nowrap;
-        }
-
-        .callout-1 {
-            top: 192px;
-            right: 30px;
-        }
-
-        .callout-2 {
-            top: 280px;
-            right: 30px;
-        }
-
-        .callout-3 {
-            bottom: 500px;
-            right: 30px;
-        }
-
-        .callout-4 {
-            top: 125px;
-            right: 30px;
-        }
-            background: rgba(255, 255, 255, 0.95);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 14px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .label-before {
-            color: #999;
-        }
-
-        .label-after {
-            color: #667eea;
-        }
-
-        /* Features Section */
-        .features {
-            max-width: 1200px;
-            margin: 100px auto;
-            padding: 0 20px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-            color: #2c3e50;
-        }
-
-        .feature-card p {
-            color: #5a6c7d;
-            line-height: 1.6;
-        }
-
-        /* Modal */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal {
-            background: white;
-            border-radius: 20px;
-            padding: 50px;
-            max-width: 500px;
-            margin: 20px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -404,411 +398,230 @@
             }
         }
 
-        .modal-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .modal h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: #2c3e50;
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 20px rgba(37, 99, 235, 0);
+            }
         }
 
-        .modal p {
-            font-size: 16px;
-            color: #5a6c7d;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .modal-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 14px 40px;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .modal-button:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-                padding: 12px 28px;
-                border-radius: 25px;
-                text-decoration: none;
-                font-weight: 600;
-                transition: transform 0.3s, box-shadow 0.3s;
-                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-
-            :hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-            }
-            display: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .hero-stats {
-                gap: 40px;
-            }
-
-            .stat-number {
-                font-size: 36px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            .comparison-container {
-                min-height: 500px;
-            }
-
-            .change-callout {
-                display: none;
-            }
-
-            .change-callout {
+        .scroll-indicator {
             position: absolute;
-            background: rgba(102, 126, 234, 0.95);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            pointer-events: none;
-            z-index: 12;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            white-space: nowrap;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
         }
 
-        .callout-1 {
-            top: 140px;
-            right: 30px;
+        .scroll-indicator::before {
+            content: '⌄';
+            font-size: 2rem;
+            color: var(--bright-blue);
+            opacity: 0.7;
         }
 
-        .callout-2 {
-            top: 280px;
-            right: 30px;
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
         }
 
-        .callout-3 {
-            top: 655px;
-            right: 30px;
-        }
-
-        .callout-4 {
-            bottom: 180px;
-            right: 30px;
-        }
-
-                    .comparison-labels {
-                padding: 0 15px;
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 0;
             }
 
-            .label {
-                font-size: 12px;
-                padding: 6px 12px;
+            .logo {
+                font-size: 1.4rem;
             }
 
-            .modal {
-                padding: 30px;
-                margin: 20px;
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1.2rem;
+            }
+
+            .tagline {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .hero-brand-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2.2rem;
+            }
+
+            .problem-section,
+            .vision-section,
+            .principles-section,
+            .cta-section {
+                padding: 80px 20px;
+            }
+
+            .problems-grid,
+            .principles-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .problem-card {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">R</div>
-                Resume Refiner
-            </div>
-            <div class="nav-links" onclick="showModal(event)">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#pricing">Pricing</a>
-                <a class="cta-button" href="#" >Buy Now</a>
-            </div>
-            <a class="mobile-menu-btn" onclick="showModal(event)">Buy Now</a>
+            <a href="#" class="logo">
+                <div class="logo-icon">N</div>
+                <span>Neeson<span class="logo-ai">.ai</span></span>
+            </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <h1>Transform Your Resume<br>Land Your Dream Job</h1>
-        <p>AI-powered resume optimization that matches you to job descriptions with surgical precision. Increase your interview rate by up to 300%.</p>
+        <div class="container">
+            <h1>Hiring Software Engineers<br>is Broken.</h1>
+            <p class="subtitle">We're fixing it.</p>
+            <p class="mission">AI-Powered Engineering Hiring That Actually Works</p>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
 
-        <div class="hero-stats">
-            <div class="stat">
-                <span class="stat-number">92%</span>
-                <span class="stat-label">Match Score Increase</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">3x</span>
-                <span class="stat-label">More Interviews</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">< 5min</span>
-                <span class="stat-label">Time to Optimize</span>
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">The Broken System</h2>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⏱️</div>
+                    <h3>Time Wasted</h3>
+                    <p class="stat">23 hours</p>
+                    <p>Average time spent per candidate on resume screening, interviews, and assessments that don't predict job success.</p>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">🎯</div>
+                    <h3>Misaligned Matches</h3>
+                    <p class="stat">67%</p>
+                    <p>Of engineers report being hired for roles that didn't match the job description they applied to.</p>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">📄</div>
+                    <h3>Resume Theater</h3>
+                    <p class="stat">6 seconds</p>
+                    <p>Average time a recruiter spends reading a resume before making a decision. Real skills get lost in formatting.</p>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">💸</div>
+                    <h3>Cost of Bad Hires</h3>
+                    <p class="stat">$240K</p>
+                    <p>Average cost of a bad engineering hire including salary, lost productivity, and team disruption.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Section -->
-    <section class="comparison-section">
-        <h2 class="section-title">See the Transformation</h2>
-
-        <div class="comparison-container" id="comparison">
-            <div class="resume-image resume-before">
-                <svg class="resume-svg" viewBox="0 0 800 1035" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="800" height="1035" fill="#ffffff"/>
-                  <text x="50" y="60" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#333333">Jane Doe</text>
-                  <text x="50" y="85" font-family="Arial, sans-serif" font-size="14" fill="#666666">janedoe@email.com | (555) 123-4567</text>
-                  <text x="50" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333333">SUMMARY</text>
-                  <line x1="50" y1="135" x2="750" y2="135" stroke="#cccccc" stroke-width="1"/>
-                  <text x="50" y="160" font-family="Arial, sans-serif" font-size="12" fill="#555555">Software engineer with experience in web development and database management.</text>
-                  <text x="50" y="210" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333333">EXPERIENCE</text>
-                  <line x1="50" y1="215" x2="750" y2="215" stroke="#cccccc" stroke-width="1"/>
-                  <text x="50" y="245" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333333">Software Engineer</text>
-                  <text x="50" y="265" font-family="Arial, sans-serif" font-size="12" fill="#666666">Tech Company Inc. | Jan 2022 - Present</text>
-                  <text x="60" y="290" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Worked on web applications</text>
-                  <text x="60" y="310" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Collaborated with team members</text>
-                  <text x="60" y="330" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Fixed bugs and improved code quality</text>
-                  <text x="50" y="370" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333333">Junior Developer</text>
-                  <text x="50" y="390" font-family="Arial, sans-serif" font-size="12" fill="#666666">StartUp Solutions | Jun 2020 - Dec 2021</text>
-                  <text x="60" y="415" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Built features for client projects</text>
-                  <text x="60" y="435" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Participated in code reviews</text>
-                  <text x="60" y="455" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Learned new technologies</text>
-                  <text x="50" y="495" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333333">Web Development Intern</text>
-                  <text x="50" y="515" font-family="Arial, sans-serif" font-size="12" fill="#666666">Digital Agency | Jan 2020 - May 2020</text>
-                  <text x="60" y="540" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Assisted with website updates</text>
-                  <text x="60" y="560" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Tested web applications</text>
-                  <text x="50" y="610" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333333">SKILLS</text>
-                  <line x1="50" y1="615" x2="750" y2="615" stroke="#cccccc" stroke-width="1"/>
-                  <text x="50" y="640" font-family="Arial, sans-serif" font-size="12" fill="#555555">JavaScript, HTML, CSS, Python, SQL, Git</text>
-                  <text x="50" y="690" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333333">EDUCATION</text>
-                  <line x1="50" y1="695" x2="750" y2="695" stroke="#cccccc" stroke-width="1"/>
-                  <text x="50" y="720" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333333">Bachelor of Science in Computer Science</text>
-                  <text x="50" y="740" font-family="Arial, sans-serif" font-size="12" fill="#666666">State University | 2016 - 2020</text>
-                </svg>
-            </div>
-            <div class="resume-image resume-after" id="afterImage">
-                <svg class="resume-svg" viewBox="0 0 800 1035" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="800" height="1035" fill="#ffffff"/>
-                  <rect x="0" y="0" width="800" height="100" fill="#f8f9fa"/>
-                  <text x="50" y="50" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#2c3e50">Jane Doe</text>
-                  <text x="50" y="75" font-family="Arial, sans-serif" font-size="13" fill="#5a6c7d">janedoe@email.com | (555) 123-4567 | linkedin.com/in/janedoe</text>
-                  <text x="50" y="140" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50" letter-spacing="0.5">PROFESSIONAL SUMMARY</text>
-                  <line x1="50" y1="145" x2="750" y2="145" stroke="#667eea" stroke-width="2"/>
-                  <text x="50" y="170" font-family="Arial, sans-serif" font-size="12" fill="#555555">Results-driven Software Engineer with 4+ years of experience building scalable web applications.</text>
-                  <text x="50" y="188" font-family="Arial, sans-serif" font-size="12" fill="#555555">Proven track record of delivering high-quality solutions and driving technical innovation.</text>
-                  <text x="50" y="230" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50" letter-spacing="0.5">PROFESSIONAL EXPERIENCE</text>
-                  <line x1="50" y1="235" x2="750" y2="235" stroke="#667eea" stroke-width="2"/>
-                  <text x="50" y="265" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Software Engineer</text>
-                  <text x="640" y="265" font-family="Arial, sans-serif" font-size="11" fill="#666666">Jan 2022 - Present</text>
-                  <text x="50" y="282" font-family="Arial, sans-serif" font-size="12" font-style="italic" fill="#667eea">Tech Company Inc.</text>
-                  <text x="60" y="305" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Architected and deployed 5 full-stack web applications serving 50K+ users, resulting in</text>
-                  <text x="68" y="322" font-family="Arial, sans-serif" font-size="11" fill="#555555">35% increase in user engagement</text>
-                  <text x="60" y="339" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Led cross-functional team of 4 developers to deliver critical features 2 weeks ahead of</text>
-                  <text x="68" y="356" font-family="Arial, sans-serif" font-size="11" fill="#555555">schedule through agile methodologies and strategic planning</text>
-                  <text x="60" y="373" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Reduced application load time by 45% through code optimization and performance tuning</text>
-                  <text x="50" y="410" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Junior Developer</text>
-                  <text x="640" y="410" font-family="Arial, sans-serif" font-size="11" fill="#666666">Jun 2020 - Dec 2021</text>
-                  <text x="50" y="427" font-family="Arial, sans-serif" font-size="12" font-style="italic" fill="#667eea">StartUp Solutions</text>
-                  <text x="60" y="450" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Developed 15+ responsive web features for enterprise clients, achieving 98% client</text>
-                  <text x="68" y="467" font-family="Arial, sans-serif" font-size="11" fill="#555555">satisfaction rating</text>
-                  <text x="60" y="484" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Implemented comprehensive testing suite, reducing production bugs by 60%</text>
-                  <text x="60" y="501" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Mentored 2 junior developers in React.js and Node.js best practices</text>
-                  <text x="50" y="538" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Web Development Intern</text>
-                  <text x="640" y="538" font-family="Arial, sans-serif" font-size="11" fill="#666666">Jan 2020 - May 2020</text>
-                  <text x="50" y="555" font-family="Arial, sans-serif" font-size="12" font-style="italic" fill="#667eea">Digital Agency</text>
-                  <text x="60" y="578" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Collaborated with design team to implement pixel-perfect responsive designs for 8 client</text>
-                  <text x="68" y="595" font-family="Arial, sans-serif" font-size="11" fill="#555555">websites, resulting in improved mobile traffic by 40%</text>
-                  <text x="60" y="612" font-family="Arial, sans-serif" font-size="11" fill="#555555">• Performed rigorous QA testing across multiple browsers and devices</text>
-                  <text x="50" y="655" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50" letter-spacing="0.5">TECHNICAL SKILLS</text>
-                  <line x1="50" y1="660" x2="750" y2="660" stroke="#667eea" stroke-width="2"/>
-                  <text x="50" y="685" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#555555">Languages:</text>
-                  <text x="145" y="685" font-family="Arial, sans-serif" font-size="12" fill="#555555">JavaScript, Python, TypeScript, SQL, HTML5, CSS3</text>
-                  <text x="50" y="705" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#555555">Frameworks:</text>
-                  <text x="145" y="705" font-family="Arial, sans-serif" font-size="12" fill="#555555">React.js, Node.js, Express.js, Django, Next.js</text>
-                  <text x="50" y="725" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#555555">Tools:</text>
-                  <text x="145" y="725" font-family="Arial, sans-serif" font-size="12" fill="#555555">Git, Docker, AWS, PostgreSQL, MongoDB, CI/CD, Agile/Scrum</text>
-                  <text x="50" y="770" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50" letter-spacing="0.5">EDUCATION</text>
-                  <line x1="50" y1="775" x2="750" y2="775" stroke="#667eea" stroke-width="2"/>
-                  <text x="50" y="800" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Bachelor of Science in Computer Science</text>
-                  <text x="640" y="800" font-family="Arial, sans-serif" font-size="11" fill="#666666">2016 - 2020</text>
-                  <text x="50" y="817" font-family="Arial, sans-serif" font-size="12" fill="#555555">State University | GPA: 3.8/4.0</text>
-                </svg>
-            </div>
-
-            <div class="comparison-labels">
-                <span class="label label-before">Standard Resume</span>
-                <span class="label label-after">Optimized Resume</span>
-            </div>
-
-            <div class="change-callout callout-1">✨ Professional summary added</div>
-            <div class="change-callout callout-2">📊 Quantified achievements</div>
-            <div class="change-callout callout-3">🎯 Organized skill categories</div>
-            <div class="change-callout callout-4">💼 LinkedIn added</div>
-
-            <div class="slider-handle" id="sliderHandle">
-                <div class="slider-button">⟷</div>
+    <section class="vision-section">
+        <div class="container">
+            <h2 class="section-title">A Better Way</h2>
+            <div class="vision-content">
+                <p class="vision-statement">
+                    Hiring should be about <strong>skills, not keywords</strong>.
+                    About <strong>potential, not polish</strong>.
+                    About <strong>fit, not formatting</strong>.
+                </p>
+                <p class="vision-statement">
+                    <strong>Neeson.ai</strong> understands what engineers <strong>actually do</strong>,
+                    not just what they write on a resume.
+                </p>
+                <p class="vision-statement">
+                    No more resume optimization games. No more interview theater.
+                    Just <strong>real signal</strong> connecting <strong>real talent</strong> with <strong>real opportunities</strong>.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <h2 class="section-title">Why Resume Refiner?</h2>
+    <section class="principles-section">
+        <div class="container">
+            <h2 class="section-title">Our Principles</h2>
 
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3>AI-Powered Matching</h3>
-                <p>Our advanced algorithms analyze job descriptions and optimize your resume to match exactly what employers are looking for.</p>
-            </div>
+            <div class="principles-grid">
+                <div class="principle">
+                    <div class="principle-number">01</div>
+                    <h3>Skills Over Keywords</h3>
+                    <p>We measure what engineers can actually do, not how well they play the ATS game.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Instant Results</h3>
-                <p>Get actionable suggestions in seconds. Review, accept, or reject changes with our intuitive DocuSign-style interface.</p>
-            </div>
+                <div class="principle">
+                    <div class="principle-number">02</div>
+                    <h3>Context Matters</h3>
+                    <p>Every role is different. Cookie-cutter approaches don't work. We understand nuance.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Real-Time Scoring</h3>
-                <p>Watch your match score increase with every accepted suggestion. Know exactly how well you align with the job.</p>
-            </div>
+                <div class="principle">
+                    <div class="principle-number">03</div>
+                    <h3>Transparency First</h3>
+                    <p>Engineers deserve to know exactly what they're signing up for. Companies deserve the same.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Privacy First</h3>
-                <p>Your data stays yours. We never share or sell your information. All processing happens securely.</p>
-            </div>
+                <div class="principle">
+                    <div class="principle-number">04</div>
+                    <h3>Respect Time</h3>
+                    <p>Both sides are busy. We eliminate waste and focus on what actually predicts success.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">✨</div>
-                <h3>ATS Optimized</h3>
-                <p>Ensure your resume passes Applicant Tracking Systems with keyword optimization and formatting best practices.</p>
-            </div>
+                <div class="principle">
+                    <div class="principle-number">05</div>
+                    <h3>Human + AI</h3>
+                    <p>Technology amplifies human judgment, it doesn't replace it. We enhance, not automate.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">💡</div>
-                <h3>Smart Suggestions</h3>
-                <p>Add missing skills, enhance descriptions, and highlight relevant experience without misrepresenting your background.</p>
+                <div class="principle">
+                    <div class="principle-number">06</div>
+                    <h3>Fair for Everyone</h3>
+                    <p>Great engineers come from everywhere. Our system works for career changers, self-taught devs, and traditional backgrounds alike.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal -->
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-        <div class="modal" onclick="event.stopPropagation()">
-            <div class="modal-icon">🚀</div>
-            <h2>Coming Soon!</h2>
-            <p>We're putting the finishing touches on Resume Refiner. Check back in 24 hours to get started on your journey to landing more interviews!</p>
-            <button class="modal-button" onclick="closeModal()">Got It</button>
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>The Future of Engineering Hiring</h2>
+                <p>We're building something fundamentally different. Something that actually works.</p>
+                <div class="coming-soon">Coming Soon</div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        // Slider functionality
-        const comparison = document.getElementById('comparison');
-        const sliderHandle = document.getElementById('sliderHandle');
-        const afterImage = document.getElementById('afterImage');
-        let isDragging = false;
-
-        function updateSlider(x) {
-            const rect = comparison.getBoundingClientRect();
-            const position = Math.max(0, Math.min(x - rect.left, rect.width));
-            const percentage = (position / rect.width) * 100;
-
-            sliderHandle.style.left = percentage + '%';
-            afterImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
-        }
-
-        sliderHandle.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            e.preventDefault();
-        });
-
-        sliderHandle.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            updateSlider(e.clientX);
-        });
-
-        document.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            updateSlider(e.touches[0].clientX);
-        }, { passive: false });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-
-        document.addEventListener('touchend', () => {
-            isDragging = false;
-        });
-
-        comparison.addEventListener('click', (e) => {
-            if (!isDragging) {
-                updateSlider(e.clientX);
-            }
-        });
-
-        // Modal functionality
-        function showModal(event) {
-            if (event) {
-                event.preventDefault();
-                gtag('event', 'click_nav', {
-                  'element': event.target.innerText
-                });
-                document.getElementById('modalOverlay').classList.add('active');
-            }
-        }
-
-        function closeModal(event) {
-            if (event && event.target !== event.currentTarget && !event.currentTarget.classList.contains('modal-button')) {
-                return;
-            }
-            document.getElementById('modalOverlay').classList.remove('active');
-        }
-    </script>
+    <footer>
+        <div class="container">
+            <div class="footer-brand">
+                <div class="footer-brand-icon">N</div>
+                <span>Neeson<span class="ai">.ai</span></span>
+            </div>
+            <p>© 2025 Neeson.ai — Fixing what's broken in engineering hiring.</p>
+        </div>
+    </footer>
 </body>
 </html>
